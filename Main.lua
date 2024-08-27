@@ -20,7 +20,7 @@ function main()
         local oldDeviceID = ""
         -- Add all rows with deviceId not matching newDeviceID
         for i, row in pairs(Sql.ExecuteFetchRows("SELECT id, path, deviceid FROM scanpaths ORDER BY id ASC")) do
-            if row["DeviceId"] ~= newDeviceID then --TODO Switch this back to ~=, set to == for testing
+            if row["DeviceId"] ~= newDeviceID then
                 oldDeviceID = row["DeviceId"]
                 dbRows[i] = { row["Id"], row["Path"], row["DeviceId"] }
                 dialogPaths = dialogPaths .. dbRows[i][2] .. " - (" .. string.sub(oldDeviceID, 1, 7) .. "..->" .. string.sub(newDeviceID, 1, 7) .. "..)\n"
